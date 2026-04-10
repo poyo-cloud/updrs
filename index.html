@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UPDRS チェックアプリ</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="app-frame">
+        <section id="formView" class="view is-active" aria-label="UPDRS入力画面">
+          <header class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow">PC向け入力アプリ</p>
+              <h1>UPDRS チェックアプリ</h1>
+              <p class="hero-text">
+                参考PDFに沿って Part I〜IV をタブで入力し、各選択肢に評価基準を見ながら、最後にコピーペースト用のテキストを出力できます。
+              </p>
+            </div>
+            <div class="hero-panel">
+              <dl class="totals-grid">
+                <div>
+                  <dt>総合計</dt>
+                  <dd id="overallTotal">0</dd>
+                </div>
+                <div>
+                  <dt>入力済み</dt>
+                  <dd id="overallAnswered">0 / 0</dd>
+                </div>
+                <div>
+                  <dt>未入力</dt>
+                  <dd id="overallMissing">0</dd>
+                </div>
+              </dl>
+              <div class="hero-actions">
+                <button type="button" id="exportButton" class="button button-primary">
+                  出力テキストを作成
+                </button>
+                <button type="button" id="resetButton" class="button button-secondary">
+                  リセット
+                </button>
+                <a
+                  class="button button-secondary"
+                  href="https://wakaba.hp4u.jp/img/sites/wakaba/UPDRS.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  参考PDFを開く
+                </a>
+              </div>
+            </div>
+          </header>
+
+          <nav id="partTabs" class="tabs" aria-label="Part切り替えタブ"></nav>
+          <section id="partPanels" class="panels" aria-live="polite"></section>
+          <button type="button" id="scrollTopButton" class="floating-top-button">一番上に戻る</button>
+        </section>
+
+        <section id="outputView" class="view" aria-label="出力画面">
+          <div class="output-card">
+            <div class="output-header">
+              <div>
+                <p class="eyebrow">コピーペースト用</p>
+                <h2>出力テキスト</h2>
+              </div>
+              <div class="output-actions">
+                <button type="button" id="copyButton" class="button button-primary">コピー</button>
+                <button type="button" id="backButton" class="button button-secondary">戻る</button>
+              </div>
+            </div>
+            <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+            <textarea
+              id="outputText"
+              class="output-textarea"
+              spellcheck="false"
+              aria-label="UPDRS出力テキスト"
+            ></textarea>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
